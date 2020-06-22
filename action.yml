@@ -1,0 +1,6 @@
+name: 'Lighthouse Metrics GitHub Action'
+description: 'Trigger automated Lighthouse tests on Lighthouse Metrics'
+
+runs:
+  using: 'node12'
+  main: 'index.js'

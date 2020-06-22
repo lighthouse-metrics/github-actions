@@ -1,0 +1,17 @@
+{
+  "name": "github-actions",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Use Lighthouse Metrics in CI using Github Actions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lighthouse-metrics/github-actions.git"
+  },
+  "dependencies": {
+    "@actions/artifact": "^0.3.2",
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^2.2.0",
+    "axios": "^0.19.2",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
