@@ -20,6 +20,12 @@ const main = async () => {
   const sha = process.env.GITHUB_SHA
   const [secret, jws] = token.split(':')
 
+  core.debug(`URL: ${url}`)
+  core.debug(`Token (length): ${token.length}`)
+  core.debug(`SHA: ${sha}`)
+  core.debug(`Environment: ${environment}`)
+  core.debug(`Endpoint: ${endpoint}`)
+
   await axios.post(`${endpoint}?secret=${secret}`, {
     action: 'requested',
     deployment: {
