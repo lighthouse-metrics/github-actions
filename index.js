@@ -9,20 +9,24 @@ const main = async () => {
   let environment = core.getInput('environment')
   let endpoint = core.getInput('endpoint')
 
+  const sha = process.env.GITHUB_SHA
+  const repository = process.env.GITHUB_REPOSITORY
+  const branch = process.env.GITHUB_REF.replace('refs/heads/', '')
+  const [secret, jws] = token.split(':')
+
   if (!environment || environment.trim().length === 0) {
-    environment = process.env.GITHUB_REF === 'refs/heads/master' ? 'Production' : 'Preview'
+    environment = branch === 'master' ? 'Production' : 'Preview'
   }
 
   if (!endpoint) {
     endpoint = 'https://lighthouse-metrics.com/api/integrations/custom/webhook'
   }
 
-  const sha = process.env.GITHUB_SHA
-  const [secret, jws] = token.split(':')
-
   core.debug(`URL: ${url}`)
   core.debug(`Token (length): ${token.length}`)
   core.debug(`SHA: ${sha}`)
+  core.debug(`Repository: ${repository}`)
+  core.debug(`Branch: ${branch}`)
   core.debug(`Environment: ${environment}`)
   core.debug(`Endpoint: ${endpoint}`)
 
@@ -31,7 +35,9 @@ const main = async () => {
     deployment: {
       sha,
       url,
-      environment
+      environment,
+      repository,
+      branch
     }
   }, {
     headers: {
