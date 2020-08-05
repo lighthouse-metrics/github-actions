@@ -16,7 +16,7 @@ jobs:
         uses: lighthouse-metrics/github-actions@master
         with:
           url: 'https://example.com'
-          token: {{ secrets.LIGHTHOUSE_METRICS_TOKEN }}
+          token: ${{ secrets.LIGHTHOUSE_METRICS_TOKEN }}
 ```
 
 ## Example
@@ -39,7 +39,7 @@ url: 'https://example.com'
 Use your token from the Dashboard after you added your repository.
 
 ```yml
-token: {{ secrets.LIGHTHOUSE_METRICS_TOKEN }}
+token: ${{ secrets.LIGHTHOUSE_METRICS_TOKEN }}
 ```
 
 Make sure you store your token as a secret. Read the [GitHub Documentation](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets) about using secrets in workflows.
